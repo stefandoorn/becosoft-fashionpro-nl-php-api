@@ -10,6 +10,8 @@ use BecosoftApi\Api;
  */
 abstract class AbstractEntity
 {
+    const PER_CALL = 50;
+
     /**
      * @var string
      */
@@ -41,5 +43,33 @@ abstract class AbstractEntity
         }
 
         return $this->api->request('GET', static::$endpoint, $options);
+    }
+
+    /**
+     * @param array $query
+     * @param array $options
+     * @return array
+     */
+    public function getAll(array $query = [], array $options = [])
+    {
+        if ($query) {
+            $options['query'] = $query;
+        }
+
+        $entities = [];
+        $options['query']['take'] = self::PER_CALL;
+
+        $skip = 0;
+        do {
+            $options['query']['skip'] = $skip;
+
+            $result = $this->api->request('GET', static::$endpoint, $options);
+            $decoded = json_decode($result->getBody()->getContents());
+            $entities = array_merge($entities, $decoded);
+
+            $skip++;
+        } while (count($decoded) === self::PER_CALL);
+
+        return $entities;
     }
 }
