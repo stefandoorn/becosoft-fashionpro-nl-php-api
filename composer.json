@@ -1,6 +1,7 @@
 {
     "name": "stefandoorn/becosoft-fashionpro-nl-php-api",
     "type": "library",
+    "description": "PHP Wrapper for the Becosoft Fashionpro NL API",
     "license": "MIT",
     "require": {
         "php": ">=5.5",
