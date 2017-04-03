@@ -1,7 +1,8 @@
 {
-    "name": "stefandoorn/becosoft-php-api",
+    "name": "stefandoorn/becosoft-fashionpro-nl-php-api",
     "type": "library",
     "require": {
+        "php": ">=5.5",
         "guzzlehttp/guzzle": "^6.2",
         "psr/log": "^1.0"
     },

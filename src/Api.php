@@ -2,11 +2,7 @@
 
 namespace BecosoftApi;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Promise\PromiseInterface;
-use Illuminate\Support\Facades\Log;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
@@ -15,18 +11,8 @@ use Psr\Http\Message\UriInterface;
  * Class Api
  * @package BecosoftApi
  */
-class Api implements ClientInterface
+class Api implements ApiInterface
 {
-
-    /**
-     *
-     */
-    const BASE_URI = 'http://api.fashionpro.becosoft.net/api/';
-
-    /**
-     *
-     */
-    const TIMEOUT = 5.0;
 
     /**
      * @var GatewayInterface
@@ -34,31 +20,12 @@ class Api implements ClientInterface
     private $gateway;
 
     /**
-     * @var string
-     */
-    private $apiKey;
-
-    /**
      * Api constructor.
-     * @param GatewayInterface|null $gateway
+     * @param GatewayInterface $gateway
      */
-    public function __construct($apiKey, GatewayInterface $gateway = null)
+    public function __construct(GatewayInterface $gateway)
     {
-        if ($gateway === null) {
-            $gateway = new Gateway(new Client([
-                'base_uri' => self::BASE_URI,
-                'timeout' => self::TIMEOUT,
-                'debug' => env('APP_DEBUG'),
-                'headers' => [
-                    'Apikey' => $apiKey,
-                    'Content-type' => 'application/json',
-                    'Accept' => 'application/json',
-                ]
-            ]), Log::getMonolog());
-        }
-
         $this->gateway = $gateway;
-        $this->apiKey = $apiKey;
     }
 
     /**
