@@ -1,6 +1,7 @@
 {
     "name": "stefandoorn/becosoft-fashionpro-nl-php-api",
     "type": "library",
+    "license": "MIT",
     "require": {
         "php": ">=5.5",
         "guzzlehttp/guzzle": "^6.2",
