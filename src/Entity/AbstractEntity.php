@@ -3,12 +3,13 @@
 namespace BecosoftApi\Entity;
 
 use BecosoftApi\Api;
+use BecosoftApi\ApiInterface;
 
 /**
  * Class AbstractEntity
  * @package BecosoftApi\Entity
  */
-abstract class AbstractEntity
+abstract class AbstractEntity implements EntityInterface
 {
     const PER_CALL = 50;
 
@@ -24,17 +25,15 @@ abstract class AbstractEntity
 
     /**
      * AbstractEntity constructor.
-     * @param Api $api
+     * @param ApiInterface $api
      */
-    public function __construct(Api $api)
+    public function __construct(ApiInterface $api)
     {
         $this->api = $api;
     }
 
     /**
-     * @param array $query
-     * @param array $options
-     * @return \Psr\Http\Message\ResponseInterface
+     * {@inheritdoc}
      */
     public function get(array $query = [], array $options = [])
     {
@@ -46,9 +45,7 @@ abstract class AbstractEntity
     }
 
     /**
-     * @param array $query
-     * @param array $options
-     * @return array
+     * {@inheritdoc}
      */
     public function getAll(array $query = [], array $options = [])
     {
