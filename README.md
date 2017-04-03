@@ -1,5 +1,7 @@
 # Becosoft Fashionpro NL PHP API Wrapper
 
+[![Build Status](https://travis-ci.org/stefandoorn/becosoft-fashionpro-nl-php-api.svg?branch=master)](https://travis-ci.org/stefandoorn/becosoft-fashionpro-nl-php-api)[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/stefandoorn/becosoft-fashionpro-nl-php-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/stefandoorn/becosoft-fashionpro-nl-php-api/?branch=master)[![Code Coverage](https://scrutinizer-ci.com/g/stefandoorn/becosoft-fashionpro-nl-php-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/stefandoorn/becosoft-fashionpro-nl-php-api/?branch=master)
+
 This package provides a simple PHP Wrapper around the Becosoft Fashionpro API: http://api.fashionpro.becosoft.net/swagger/ui/index).
 
 Please note:
