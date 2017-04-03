@@ -50,6 +50,7 @@ The API allows you to insert your own `Gateway`. The default `Gateway` (from the
 $gateway = GatewayFactory::get('apiKey', $debug = true);
 $api = new Api($gateway);
 $entity = new Artikel($this->api);
+
 $allArticles = $entity->getAll();
 ```
 
