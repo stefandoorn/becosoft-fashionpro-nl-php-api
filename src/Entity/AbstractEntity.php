@@ -38,8 +38,8 @@ abstract class AbstractEntity
      */
     public function get(array $query = [], array $options = [])
     {
-        if ($query) {
-            $options['query'] = $query;
+        if (!empty($query)) {
+            $options = $this->setOptions($query, $options);
         }
 
         return $this->api->request('GET', static::$endpoint, $options);
@@ -52,12 +52,13 @@ abstract class AbstractEntity
      */
     public function getAll(array $query = [], array $options = [])
     {
-        if ($query) {
-            $options['query'] = $query;
+        $options['query']['take'] = self::PER_CALL;
+
+        if (!empty($query)) {
+            $options = $this->setOptions($query, $options);
         }
 
         $entities = [];
-        $options['query']['take'] = self::PER_CALL;
 
         $skip = 0;
         do {
@@ -71,5 +72,21 @@ abstract class AbstractEntity
         } while (count($decoded) === self::PER_CALL);
 
         return $entities;
+    }
+
+    /**
+     * @param array $query
+     * @param array $options
+     * @return array
+     */
+    private function setOptions(array $query, array $options)
+    {
+        if (array_key_exists('query', $options)) {
+            $query = array_merge($options['query'], $query);
+        }
+
+        $options['query'] = $query;
+
+        return $options;
     }
 }
