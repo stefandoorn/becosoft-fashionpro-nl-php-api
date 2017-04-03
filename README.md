@@ -31,7 +31,7 @@ public function __construct(GatewayInterface $gateway)
 Quick start: 
 
 ```
-$gateway = Gateway::get('apiKey', $debug = true);
+$gateway = GatewayFactory::get('apiKey', $debug = true);
 $api = new Api($gateway);
 ```
 
@@ -47,7 +47,7 @@ The API allows you to insert your own `Gateway`. The default `Gateway` (from the
 ### Load Articles
 
 ```
-$gateway = Gateway::get('apiKey', $debug = true);
+$gateway = GatewayFactory::get('apiKey', $debug = true);
 $api = new Api($gateway);
 $entity = new Artikel($this->api);
 $allArticles = $entity->getAll();
@@ -56,7 +56,7 @@ $allArticles = $entity->getAll();
 ### Load Articles with a filter
 
 ```
-$gateway = Gateway::get('apiKey', $debug = true);
+$gateway = GatewayFactory::get('apiKey', $debug = true);
 $api = new Api($gateway);
 
 $allArticles = $entity->getAll([
