@@ -9,6 +9,21 @@ namespace BecosoftApi\Entity;
 interface EntityInterface
 {
     /**
+     * @param $id
+     * @param array $options
+     * @return string
+     */
+    public function getById($id, array $options = []);
+
+    /**
+     * @param string $data (JSON e.g.)
+     * @param array $options
+     * @return string
+     * @throws \Exception
+     */
+    public function post($data, array $options = []);
+
+    /**
      * @param array $query
      * @param array $options
      * @return \Psr\Http\Message\ResponseInterface

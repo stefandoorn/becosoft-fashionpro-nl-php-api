@@ -67,3 +67,25 @@ $allArticles = $entity->getAll([
     'internetPublished' => 'true',
 ]);
 ```
+
+### POST items
+
+* Use `post` on an entity to push a single item to Becosoft
+
+## Examples
+
+### POST Weborder
+
+```
+$gateway = GatewayFactory::get('apiKey', $debug = true);
+$api = new Api($gateway);
+$entity = new BecosoftApi\Entity\Weborder($this->api);
+
+$weborder = new BecosoftApi\Model\Weborder;
+$weborder->WeborderId = 1;
+
+...
+$result = $entity->post($weborder->toJson();
+```
+
+Currently you have to insert a JSON object yourself, which gives flexibility. The Weborder model is simply a helper model to make sure you insert fields with the correct name.

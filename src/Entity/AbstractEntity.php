@@ -4,6 +4,7 @@ namespace BecosoftApi\Entity;
 
 use BecosoftApi\Api;
 use BecosoftApi\ApiInterface;
+use Webmozart\Assert\Assert;
 
 /**
  * Class AbstractEntity
@@ -19,6 +20,11 @@ abstract class AbstractEntity implements EntityInterface
     protected static $endpoint;
 
     /**
+     * @var string
+     */
+    protected static $idField;
+
+    /**
      * @var Api
      */
     protected $api;
@@ -30,6 +36,35 @@ abstract class AbstractEntity implements EntityInterface
     public function __construct(ApiInterface $api)
     {
         $this->api = $api;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getById($id, array $options = [])
+    {
+        Assert::notNull(self::$idField);
+
+        return $this->get([self::$idField => $id], $options)->getBody()->getContents();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function post($data, array $options = [])
+    {
+        if (array_key_exists('body', $options) && !empty($data)) {
+            throw new \Exception('BODY key already exists in options array, supplied data is not empty');
+        }
+
+        $options['body'] = $data;
+
+        if (!array_key_exists('Content-Type', $options)) {
+            $options['Content-Type'] = 'application/json';
+        }
+
+        $response = $this->api->request('POST', static::$endpoint, $options);
+        return $response->getBody()->getContents();
     }
 
     /**
