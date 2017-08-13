@@ -43,9 +43,9 @@ abstract class AbstractEntity implements EntityInterface
      */
     public function getById($id, array $options = [])
     {
-        Assert::notNull(self::$idField);
+        Assert::notNull(static::$idField);
 
-        return $this->get([self::$idField => $id], $options)->getBody()->getContents();
+        return $this->get([static::$idField => $id], $options)->getBody()->getContents();
     }
 
     /**
