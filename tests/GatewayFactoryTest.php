@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Tests\BecosoftApi;
 
@@ -7,7 +7,7 @@ use BecosoftApi\GatewayInterface;
 use GuzzleHttp\ClientInterface;
 use Psr\Log\NullLogger;
 
-class GatewayFactoryTest extends \PHPUnit_Framework_TestCase
+final class GatewayFactoryTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testGet()

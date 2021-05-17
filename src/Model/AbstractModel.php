@@ -1,20 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BecosoftApi\Model;
 
 use Illuminate\Support\Collection;
 
-/**
- * Class AbstractModel
- * @package BecosoftApi\Model
- */
 abstract class AbstractModel
 {
-    /**
-     * @return array
-     * @todo Refactor this
-     */
-    public function toArray()
+    public function toArray(): array
     {
         $values = call_user_func('get_object_vars', $this);
 
@@ -41,10 +35,7 @@ abstract class AbstractModel
         });
     }
 
-    /**
-     * @return string
-     */
-    public function toJson()
+    public function toJson(): string
     {
         return json_encode($this->toArray());
     }

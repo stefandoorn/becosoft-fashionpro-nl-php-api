@@ -1,12 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BecosoftApi\Model;
 
-/**
- * Class WeborderDetail
- * @package BecosoftApi\Model
- */
-class WeborderDetail extends AbstractModel
+final class WeborderDetail extends AbstractModel
 {
     /**
      * @var int

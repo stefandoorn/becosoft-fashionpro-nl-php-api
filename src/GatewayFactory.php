@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BecosoftApi;
 
 use GuzzleHttp\Client;
@@ -7,15 +9,9 @@ use GuzzleHttp\ClientInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
-/**
- * Class GatewayFactory.
- */
-class GatewayFactory implements GatewayFactoryInterface
+final class GatewayFactory implements GatewayFactoryInterface
 {
-    /**
-     * @inheritDoc
-     */
-    public static function get($apiKey, $debug = false, LoggerInterface $logger = null)
+    public static function get($apiKey, $debug = false, LoggerInterface $logger = null): GatewayInterface
     {
         if ($logger === null) {
             $logger = new NullLogger();

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Tests\BecosoftApi;
 
@@ -6,7 +6,7 @@ use BecosoftApi\Api;
 use BecosoftApi\ApiInterface;
 use BecosoftApi\GatewayFactory;
 
-class ApiTest extends \PHPUnit_Framework_TestCase
+final class ApiTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testObject()

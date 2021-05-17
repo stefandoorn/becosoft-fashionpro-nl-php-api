@@ -1,14 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BecosoftApi\Model;
 
 use Illuminate\Support\Collection;
 
-/**
- * Class Weborder
- * @package BecosoftApi\Model
- */
-class Weborder extends AbstractModel
+final class Weborder extends AbstractModel
 {
     /**
      * @var int
@@ -150,9 +148,6 @@ class Weborder extends AbstractModel
      */
     public $Payments;
 
-    /**
-     * Weborder constructor.
-     */
     public function __construct()
     {
         $this->Details = new Collection();

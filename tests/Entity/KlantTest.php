@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Tests\BecosoftApi\Entity;
 
@@ -10,7 +10,7 @@ use BecosoftApi\Entity\EntityInterface;
 use BecosoftApi\Entity\Klant;
 use BecosoftApi\GatewayFactory;
 
-class KlantTest extends \PHPUnit_Framework_TestCase
+final class KlantTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
@@ -18,7 +18,7 @@ class KlantTest extends \PHPUnit_Framework_TestCase
      */
     private $api;
 
-    public function setUp()
+    public function setUp(): void
     {
         $gateway = GatewayFactory::get('testKey');
         $this->api = new Api($gateway);

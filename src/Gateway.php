@@ -1,15 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BecosoftApi;
 
 use GuzzleHttp\ClientInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
-/**
- * Class Gateway.
- */
-class Gateway implements GatewayInterface
+final class Gateway implements GatewayInterface
 {
     /**
      * @var ClientInterface
@@ -21,51 +20,30 @@ class Gateway implements GatewayInterface
      */
     protected $logger;
 
-    /**
-     * Gateway constructor.
-     * @param ClientInterface|null $client
-     * @param LoggerInterface|null $logger
-     */
     public function __construct(ClientInterface $client = null, LoggerInterface $logger = null)
     {
         $this->client = $client;
         $this->logger = $logger ? $logger : new NullLogger();
     }
 
-    /**
-     * @return ClientInterface
-     */
-    public function getClient()
+    public function getClient(): ClientInterface
     {
         return $this->client;
     }
 
-    /**
-     * @param ClientInterface $client
-     *
-     * @return Gateway
-     */
-    public function setClient(ClientInterface $client)
+    public function setClient(ClientInterface $client): self
     {
         $this->client = $client;
 
         return $this;
     }
 
-    /**
-     * @return LoggerInterface
-     */
-    public function getLogger()
+    public function getLogger(): LoggerInterface
     {
         return $this->logger;
     }
 
-    /**
-     * @param $logger
-     *
-     * @return Gateway
-     */
-    public function setLogger($logger)
+    public function setLogger($logger): self
     {
         $this->logger = $logger;
 
