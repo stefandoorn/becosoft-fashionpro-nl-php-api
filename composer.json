@@ -4,7 +4,7 @@
     "description": "PHP Wrapper for the Becosoft Fashionpro NL API",
     "license": "MIT",
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.0",
         "guzzlehttp/guzzle": "^7.0",
         "illuminate/collections": "^8.0|^9.0|^10.0",
         "psr/log": "^1.0",
