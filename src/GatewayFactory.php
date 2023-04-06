@@ -11,7 +11,7 @@ use Psr\Log\NullLogger;
 
 final class GatewayFactory implements GatewayFactoryInterface
 {
-    public static function get($apiKey, $debug = false, LoggerInterface $logger = null): GatewayInterface
+    public static function get($apiKey, LoggerInterface $logger = null, $debug = false): GatewayInterface
     {
         if ($logger === null) {
             $logger = new NullLogger();
